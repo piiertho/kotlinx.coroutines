@@ -9,8 +9,10 @@ dependencies {
     compile "org.jetbrains.kotlinx:kotlinx-html-js:$html_version"
 }
 
+// TODO: Port to new K/JS gradle plugin
 compileKotlin2Js {
     kotlinOptions {
+        freeCompilerArgs += ["-Xir-produce-js"]
         main = "call"
     }
 }

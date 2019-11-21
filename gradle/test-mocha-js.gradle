@@ -19,7 +19,6 @@ task testMochaNode(type: NodeTask, dependsOn: [compileTestKotlinJs, installDepen
     if (project.hasProperty("teamcity")) args += ['--reporter', 'mocha-teamcity-reporter']
 }
 
-jsTest.dependsOn testMochaNode
 
 // -- Testing with Mocha under headless Chrome
 
@@ -89,5 +88,4 @@ task testMochaJsdom(type: NodeTask, dependsOn: [compileTestKotlinJs, installDepe
     if (project.hasProperty("teamcity")) args += ['--reporter', 'mocha-teamcity-reporter']
 }
 
-jsTest.dependsOn testMochaJsdom
 
