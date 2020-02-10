@@ -1,19 +1,13 @@
 package kotlinx.coroutines.debug
 import kotlinx.coroutines.*
-import kotlinx.coroutines.debug.internal.BlockHoundIntegration
 import org.junit.*
+import reactor.blockhound.BlockHound
 import reactor.blockhound.BlockingOperationError
 
 class BlockHoundTest : TestBase() {
 
-    @Before
-    fun init() {
-        BlockHoundIntegration.install()
-    }
-
-    @After
-    fun deinit() {
-        BlockHoundIntegration.uninstall()
+    init {
+        BlockHound.install()
     }
 
     @Test(expected = BlockingOperationError::class)

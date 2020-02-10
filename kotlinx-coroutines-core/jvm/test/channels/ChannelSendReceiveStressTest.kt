@@ -29,7 +29,7 @@ class ChannelSendReceiveStressTest(
                 }
     }
 
-    private val timeLimit = 30_000L * stressTestMultiplier // 30 sec
+    private val timeLimit = 30_000L * stressTestMultiplier // 200 sec
     private val nEvents = 200_000 * stressTestMultiplier
 
     private val maxBuffer = 10_000 // artificial limit for LinkedListChannel
