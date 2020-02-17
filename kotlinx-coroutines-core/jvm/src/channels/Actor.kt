@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2018 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license.
+ * Copyright 2016-2020 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license.
  */
 
 package kotlinx.coroutines.channels
@@ -165,8 +165,11 @@ private class LazyActorCoroutine<E>(
     }
 
     override fun close(cause: Throwable?): Boolean {
+        // close the channel _first_
+        val closed = super.close(cause)
+        // then start the coroutine (it will promptly fail if it was not started yet)
         start()
-        return super.close(cause)
+        return closed
     }
 
     override val onSend: SelectClause2<E, SendChannel<E>>
